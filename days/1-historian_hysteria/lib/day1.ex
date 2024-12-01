@@ -28,4 +28,30 @@ defmodule Day1 do
     |> Stream.map(fn {a, b} -> abs(a - b) end)
     |> Enum.sum()
   end
+
+  @doc ~S"""
+  Figure out exactly how often each number from the left list appears in the
+  right list. Calculate a total similarity score by adding up each number in
+  the left list after multiplying it by the number of times that number appears
+  in the right list.
+  """
+  def part_2(data_path) do
+    File.stream!(data_path)
+    |> Stream.map(fn line ->
+      String.split(line)
+      |> Stream.map(&String.to_integer/1)
+      |> Enum.to_list()
+      |> List.to_tuple()
+    end)
+    |> Enum.unzip()
+    |> then(fn {l, r} ->
+      Enum.map(l, fn n ->
+        case Enum.frequencies(r)[n] do
+          nil -> 0
+          freq -> n * freq
+        end
+      end)
+    end)
+    |> Enum.sum()
+  end
 end

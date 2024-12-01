@@ -21,4 +21,20 @@ defmodule Day1Test do
       assert res == 2_344_935
     end
   end
+
+  describe "part 2" do
+    test "example" do
+      res = part_2(@example_data)
+      IO.puts("\tPart 2 example:\t\t#{res}")
+
+      assert res == 31
+    end
+
+    test "data" do
+      res = part_2(@data)
+      IO.puts("\tPart 2 result:\t\t#{res}")
+
+      assert res == 27_647_262
+    end
+  end
 end
