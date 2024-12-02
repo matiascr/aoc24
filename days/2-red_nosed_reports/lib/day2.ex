@@ -43,4 +43,34 @@ defmodule Day2 do
     |> Stream.filter(&is_safe?/1)
     |> Enum.count()
   end
+
+  defp problem_dampener_tolerates?(report) do
+    not (0..length(report)
+         |> Stream.map(&List.delete_at(report, &1))
+         |> Stream.filter(&is_safe?/1)
+         |> Enum.empty?())
+  end
+
+  @doc ~S"""
+  The engineers are surprised by the low number of safe reports until they 
+  realize they forgot to tell you about the Problem Dampener.
+
+  The Problem Dampener is a reactor-mounted module that lets the reactor safety 
+  systems tolerate a single bad level in what would otherwise be a safe report. 
+  It's like the bad level never happened!
+
+  Now, the same rules apply as before, except if removing a single level from 
+  an unsafe report would make it safe, the report instead counts as safe.
+  """
+  def part_2(data_path) do
+    File.stream!(data_path)
+    |> Stream.map(fn line ->
+      line
+      |> String.split()
+      |> Stream.map(&String.to_integer/1)
+      |> Enum.to_list()
+    end)
+    |> Stream.filter(&problem_dampener_tolerates?/1)
+    |> Enum.count()
+  end
 end
