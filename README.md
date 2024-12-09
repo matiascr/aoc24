@@ -11,3 +11,4 @@ Run `mix test` to see the results of all days.
 - [Day 5 - Print Queue](./days/5-print_queue)
 - [Day 6 - Guard Gallivant](./days/6-guard_gallivant)
 - [Day 7 - Bridge Repair](./days/7-bridge_repair)
+- [Day 9 - Disk Fragmenter](./days/9-disk_fragmenter)
