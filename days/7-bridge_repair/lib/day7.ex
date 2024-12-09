@@ -11,14 +11,21 @@ defmodule Day7 do
       |> String.split([":", " "])
       |> Enum.filter(&(&1 != ""))
 
-    {String.to_integer(result), numbers}
+    {
+      result
+      |> String.to_integer(),
+      numbers
+      |> Enum.map(&String.to_integer/1)
+    }
   end
 
   def selections(_, 0), do: [[]]
 
   def selections(possibilities, target_length) do
     Enum.flat_map(possibilities, fn el ->
-      Enum.map(selections(possibilities, target_length - 1), &[el | &1])
+      possibilities
+      |> selections(target_length - 1)
+      |> Enum.map(&[el | &1])
     end)
   end
 
@@ -26,11 +33,13 @@ defmodule Day7 do
   def compute_variant(_target, [_not_target], _), do: false
 
   def compute_variant(target, [f, s | next_numbers], [operator | next_operators]) do
-    {res, _} = Code.eval_string("#{f} #{operator} #{s}")
-
-    cond do
-      res > target -> false
-      res <= target -> compute_variant(target, [res | next_numbers], next_operators)
+    case operator do
+      "+" -> f + s
+      "*" -> f * s
+    end
+    |> case do
+      res when res > target -> false
+      res when res <= target -> compute_variant(target, [res | next_numbers], next_operators)
     end
   end
 
@@ -38,7 +47,13 @@ defmodule Day7 do
     nof_operators = length(numbers) - 1
     combinations = ["*", "+"] |> selections(nof_operators)
 
-    true in Enum.map(combinations, &compute_variant(target, numbers, &1))
+    Enum.reduce_while(combinations, combinations, fn combination, _ ->
+      if compute_variant(target, numbers, combination) do
+        {:halt, true}
+      else
+        {:cont, false}
+      end
+    end)
   end
 
   def valid_line?(line), do: line != nil
@@ -46,11 +61,10 @@ defmodule Day7 do
   def part_1(data_path) do
     data_path
     |> File.stream!()
-    |> Enum.to_list()
-    |> Enum.map(&String.trim/1)
-    |> Enum.map(&parse_line/1)
-    |> Enum.filter(&compute_line/1)
-    |> Enum.map(fn {target, _} -> target end)
+    |> Stream.map(&String.trim/1)
+    |> Stream.map(&parse_line/1)
+    |> Stream.filter(&compute_line/1)
+    |> Stream.map(fn {target, _} -> target end)
     |> Enum.sum()
   end
 end
