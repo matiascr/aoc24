@@ -1,9 +1,9 @@
-defmodule Day9.MixProject do
+defmodule Day4.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :"9-disk_fragmenter",
+      app: :"04-ceres_search",
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",

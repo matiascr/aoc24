@@ -1,9 +1,9 @@
-defmodule Day6.MixProject do
+defmodule Day7.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :"6-guard_gallivant",
+      app: :"07-bridge_repair",
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
