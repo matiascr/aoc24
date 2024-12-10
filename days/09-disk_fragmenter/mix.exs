@@ -1,9 +1,9 @@
-defmodule Day1.MixProject do
+defmodule Day9.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :"1-historian_hysteria",
+      app: :"09-disk_fragmenter",
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",

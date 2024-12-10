@@ -1,9 +1,9 @@
-defmodule Day2.MixProject do
+defmodule Day10.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :"2-red_nosed_reports",
+      app: :"10-hoof_it",
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",

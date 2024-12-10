@@ -1,9 +1,9 @@
-defmodule Day5.MixProject do
+defmodule Day1.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :"5-print_queue",
+      app: :"01-historian_hysteria",
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
