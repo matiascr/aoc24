@@ -11,6 +11,7 @@ Run `mix test` to see the results of all days.
 - [Day 5 - Print Queue](./days/05-print_queue)
 - [Day 6 - Guard Gallivant](./days/06-guard_gallivant)
 - [Day 7 - Bridge Repair](./days/07-bridge_repair)
+- [Day 8 - Resonant Collinearity](./days/08-resonant_colinearity)
 - [Day 9 - Disk Fragmenter](./days/09-disk_fragmenter)
 - [Day 10 - Hoof It](./days/10-hoof_it)
 - [Day 11 - Plutonian Pebbles](./days/11-plutonian_pebbles)
