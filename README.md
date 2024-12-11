@@ -13,3 +13,4 @@ Run `mix test` to see the results of all days.
 - [Day 7 - Bridge Repair](./days/07-bridge_repair)
 - [Day 9 - Disk Fragmenter](./days/09-disk_fragmenter)
 - [Day 10 - Hoof It](./days/10-hoof_it)
+- [Day 11 - Plutonian Pebbles](./days/11-plutonian_pebbles)
